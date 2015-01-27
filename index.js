@@ -9,7 +9,7 @@ function StreamTip(options) {
 
     var self = this;
 
-    this._socket = io.connect('https://streamtip.com', {
+    this._socket = io.connect('https://streamtip.com/', {
         multiplex: false,
         query: 'client_id='+ this.options.clientId +'&access_token='+ this.options.accessToken
     });

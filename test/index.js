@@ -47,9 +47,10 @@ describe('streamtip live api', function() {
 
     it('should post a notification for new tips', function(done) {
         streamtip.on('newTip', function(tip) {
+            if (tip.transactionId !== 'MANUAL' + tipId) return;
             assert.strictEqual(tip.username, 'travis');
             assert.strictEqual(tip.amount, '5.00');
-            tipsToDelete.push(tip.transactionId);
+            tipsToDelete.push('MANUAL' + tipId);
             done();
         });
 
