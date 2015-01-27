@@ -69,6 +69,10 @@ describe('streamtip live api', function() {
         });
     });
 
+    afterEach(function(done) {
+        setTimeout(done, 1000);
+    });
+
     after(function(done) {
         if (tipsToDelete.length === 0) {
             done();
