@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Evented wrapper API for StreamTip",
   "main": "index.js",
-  "scripts": {
-    "test": "mocha"
-  },
   "keywords": [
     "streamtip",
     "twitch",
@@ -16,10 +13,5 @@
   "dependencies": {
     "events": "^1.0.2",
     "socket.io-client": "^1.2.1"
-  },
-  "devDependencies": {
-    "chai": "^1.10.0",
-    "mocha": "^2.1.0",
-    "request": "^2.51.0"
   }
 }
