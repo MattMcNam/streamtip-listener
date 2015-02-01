@@ -1,6 +1,6 @@
 {
   "name": "streamtip-listener",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Evented wrapper API for StreamTip",
   "main": "index.js",
   "keywords": [
@@ -9,6 +9,11 @@
     "hitbox"
   ],
   "author": "Matthew McNamara <matt@mattmcn.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MattMcNam/streamtip-listener.git"
+  },
+  "bugs": "https://github.com/MattMcNam/streamtip-listener/issues",
   "license": "MIT",
   "dependencies": {
     "events": "^1.0.2",
