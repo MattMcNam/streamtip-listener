@@ -23,8 +23,10 @@ function StreamTip(options) {
     });
 
     this._socket.on('error', function(err) {
-        if(err === '401::Access Denied::') {
+        if (err === '401::Access Denied::') {
             self.emit('authenticationFailed');
+        } else if (err.message === 'xhr poll error') {
+            // ignoring xhr poll error, socket.io will reconnect
         } else {
             self.emit('error', err);
         }

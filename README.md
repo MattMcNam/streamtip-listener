@@ -20,28 +20,28 @@ var listener = new Streamtip(opts);
 listener.on('connected', function() {
   // Successfully connected to Streamtip, but not authenticated yet!
   console.log('connected!');
-}
+});
 
 listener.on('authenticated', function() {
   // Now authenticated, we can expect tip alerts to come through
   console.log('authenticated!');
-}
+});
 
 listener.on('authenticationFailed', function() {
   // ClientID or Access Token was rejected
   console.log('authentication failed!');
-}
+});
 
 listener.on('newTip', function(tip) {
   // We got a new tip.
   // 'tip' is an object which matches the description given on the Streamtip API page
   console.log('new tip! %s has tipped %s%s!', tip.username, tip.currencySymbol, tip.amount);
-}
+});
 
 listener.on('error', function(err) {
   // An unexpected error occurred
   console.log('error! %s', err.message);
-}
+});
 ```
 
 ### Contributing
