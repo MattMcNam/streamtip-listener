@@ -32,6 +32,11 @@ listener.on('authenticationFailed', function() {
   console.log('authentication failed!');
 });
 
+listener.on('ratelimited', function () {
+  // Too many bad authentications = ratelimited
+  console.log('rate limited!');
+});
+
 listener.on('newTip', function(tip) {
   // We got a new tip.
   // 'tip' is an object which matches the description given on the Streamtip API page
