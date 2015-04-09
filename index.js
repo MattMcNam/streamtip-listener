@@ -129,7 +129,6 @@ Streamtip.prototype.loadSocketIO = function() {
 Streamtip.prototype.compareTop = function(tip, callback) {
     var topPeriods = Object.keys(this._top);
     var _self = this;
-    console.log(tip);
 
     var top = null;
     var updated = false;
