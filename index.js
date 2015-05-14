@@ -75,6 +75,7 @@ Streamtip.prototype.loadTop = function() {
 
             _self._top[period].id = body.tips[0]._id;
             _self._top[period].cents = body.tips[0].cents;
+            _self.emit('newTop', period, _self._top[period]);
         });
     });
 };
@@ -146,15 +147,34 @@ Streamtip.prototype.compareTop = function(tip, callback) {
         if(!updated) {
             top = period;
             updated = true;
-        }
 
-        periodObj.id = tip._id;
-        periodObj.cents = tip.cents;
+            // If a donation is top for a given period, it must also be top for all periods shorter than it
+            var periods = Object.keys(_self._top);
+            var periodIdx = periods.indexOf(period);
+            var targetPeriods = periods.slice(periodIdx);
+            targetPeriods.forEach(function(period) {
+                _self._top[period] = tip;
+            });
+        }
     });
 
     tip.top = top;
-
+    if (top) _self.emit('newTop', top, tip);
     callback(tip);
+};
+
+/**
+ * Reset a period for top donation (day, month)
+ *
+ * @param {String} period
+ */
+Streamtip.prototype.resetTop = function(period) {
+    var _self = this;
+    if (!_self._top.hasOwnProperty(period)) {
+        throw new Error('Invalid period "' + period + '"')
+    }
+
+    _self._top[period] = {};
 };
 
 module.exports = Streamtip;
