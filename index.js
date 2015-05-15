@@ -73,8 +73,7 @@ Streamtip.prototype.loadTop = function() {
 
             if (body._count === 0) return;
 
-            _self._top[period].id = body.tips[0]._id;
-            _self._top[period].cents = body.tips[0].cents;
+            _self._top[period] = body.tips[0];
             _self.emit('newTop', period, _self._top[period]);
         });
     });
