@@ -153,6 +153,7 @@ Streamtip.prototype.compareTop = function(tip, callback) {
             var targetPeriods = periods.slice(periodIdx);
             targetPeriods.forEach(function(period) {
                 _self._top[period] = tip;
+                _self.emit('newTop', period, tip);
             });
         }
     });
