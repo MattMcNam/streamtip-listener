@@ -1,3 +1,4 @@
+/* jshint -W106 */
 'use strict';
 
 var io = require('socket.io-client'),
@@ -64,11 +65,11 @@ Streamtip.prototype.loadTop = function() {
             strictSSL: true
         }, function(err, res, body) {
             if (err) {
-                return self.emit('error', err);
+                return _self.emit('error', err);
             }
 
             if (res.statusCode !== 200) {
-                return self.emit('error', new Error('Unable to fetch ' + period + ' top: ' + res.statusCode));
+                return _self.emit('error', new Error('Unable to fetch ' + period + ' top: ' + res.statusCode));
             }
 
             if (body._count === 0) return;
@@ -100,6 +101,7 @@ Streamtip.prototype.loadSocketIO = function() {
         _self.emit('authenticated');
     });
 
+    /* jshint -W035 */
     this._socket.on('error', function(err) {
         if (err === '401::Access Denied::') {
             _self.emit('authenticationFailed');
@@ -112,6 +114,7 @@ Streamtip.prototype.loadSocketIO = function() {
             _self.emit('error', err);
         }
     });
+    /* jshint +W035 */
 
     this._socket.on('newTip', function (data) {
         _self.compareTop(data, function(tip) {
@@ -171,7 +174,7 @@ Streamtip.prototype.compareTop = function(tip, callback) {
 Streamtip.prototype.resetTop = function(period) {
     var _self = this;
     if (!_self._top.hasOwnProperty(period)) {
-        throw new Error('Invalid period "' + period + '"')
+        throw new Error('Invalid period "' + period + '"');
     }
 
     _self._top[period] = {};
