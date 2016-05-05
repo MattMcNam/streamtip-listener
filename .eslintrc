@@ -1,0 +1,17 @@
+{
+  "root": true,
+  "rules": {
+    "indent": [2, 4],
+    "linebreak-style": [2, "unix"],
+    "no-console": [2],
+    "no-alert": [2],
+    "quotes": [2, "single"],
+    "semi": [2, "always"],
+    "no-mixed-spaces-and-tabs": [2, "smart-tabs"]
+  },
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "extends": "eslint:recommended"
+}

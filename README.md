@@ -8,44 +8,44 @@ npm install streamtip-listener
 
 ### Usage
 ```javascript
-var Streamtip = require('streamtip-listener');
+const Streamtip = require('streamtip-listener');
 
-var opts = {
+let opts = {
   clientId: '12345', // Your Client ID, from the Streamtip account page
   accessToken: '67890' // Account Token, again from the account page
 };
 
 var listener = new Streamtip(opts);
 
-listener.on('connected', function() {
+listener.on('connected', () => {
   // Successfully connected to Streamtip, but not authenticated yet!
   console.log('connected!');
 });
 
-listener.on('authenticated', function() {
+listener.on('authenticated', () => {
   // Now authenticated, we can expect tip alerts to come through
   console.log('authenticated!');
 });
 
-listener.on('authenticationFailed', function() {
+listener.on('authenticationFailed', () => {
   // ClientID or Access Token was rejected
   console.log('authentication failed!');
 });
 
-listener.on('ratelimited', function () {
+listener.on('ratelimited', () => {
   // Too many bad authentications = ratelimited
   console.log('rate limited!');
 });
 
-listener.on('newTip', function(tip) {
+listener.on('newTip', tip => {
   // We got a new tip.
   // 'tip' is an object which matches the description given on the Streamtip API page
-  console.log('new tip! %s has tipped %s%s!', tip.username, tip.currencySymbol, tip.amount);
+  console.log(`new tip! ${tip.username} has tipped ${tip.currencySymbol}${tip.amount}!`);
 });
 
 listener.on('error', function(err) {
   // An unexpected error occurred
-  console.log('error! %s', err.message);
+  console.log(`error! ${err.message}`);
 });
 ```
 
