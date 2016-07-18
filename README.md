@@ -1,6 +1,9 @@
 # streamtip-listener
 A Node.JS wrapper for the [Streamtip](https://streamtip.com/) API.
 
+## DEPRECATED
+This repository is no longer maintained. Please switch to the cleaner rewrite [streamtip](https://github.com/MattMcNam/streamtip)
+
 ### Installation
 ```
 npm install streamtip-listener
