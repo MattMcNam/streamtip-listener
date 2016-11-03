@@ -16,7 +16,7 @@
   "bugs": "https://github.com/MattMcNam/streamtip-listener/issues",
   "license": "MIT",
   "dependencies": {
-    "request": "^2.55.0",
+    "request": "^2.77.0",
     "socket.io-client": "^1.3.5"
   }
 }
